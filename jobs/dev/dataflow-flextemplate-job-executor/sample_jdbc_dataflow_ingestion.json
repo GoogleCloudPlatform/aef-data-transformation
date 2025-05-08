@@ -2,20 +2,20 @@
   "dataflow_template_name": "Jdbc_to_BigQuery_Flex",
   "dataflow_template_version": "latest",
   "dataflow_location": "us-central1",
-  "project_id": "<PROJECT_ID>",
+  "project_id": "tim-pso-training-project",
   "dataflow_max_workers": "10",
-  "dataflow_temp_bucket": "<PROJECT_ID>-temp",
+  "dataflow_temp_bucket": "tim-pso-training-project-temp",
   "network": "sample-vpc",
   "subnetwork": "regions/us-central1/subnetworks/default-us-central1",
   "dataflow_job_params": {
-    "driverJars": "gs://<PROJECT_ID>_aef_artifacts_bucket/jdbcjars/postgresql-42.7.3.jar",
+    "driverJars": "gs://tim-pso-training-project_aef_artifacts_bucket/jdbcjars/postgresql-42.7.3.jar",
     "driverClassName": "org.postgresql.Driver",
-    "connectionURL": "jdbc:postgresql://<DB_PRIVATE_IP>:5432/postgres",
-    "outputTable": "<PROJECT_ID>:aef_landing_sample_dataset.raw_suppliers",
-    "query": "SELECT * FROM public.suppliers",
-    "bigQueryLoadingTemporaryDirectory": "gs://<PROJECT_ID>-temp/jdbc_temp/suppliers/",
+    "connectionURL": "jdbc:postgresql://10.60.0.3:5432/postgres",
+    "outputTable": "tim-pso-training-project:aef_landing_sample_dataset.raw_transaction",
+    "query": "SELECT * FROM public.raw_transaction",
+    "bigQueryLoadingTemporaryDirectory": "gs://tim-pso-training-project-temp/jdbc_temp/transactions/",
     "username": "user1",
     "password": "changeme",
-    "createDisposition": "CREATE_NEVER"
+    "createDisposition": "CREATE_IF_NEEDED"
   }
 }
